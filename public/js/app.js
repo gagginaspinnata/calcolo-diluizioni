@@ -10,7 +10,7 @@ $(document).ready(function() {
 
             var ris_prodotto = (quantita_soluzione / parti_totali);
             var ris_acqua = ris_prodotto * parti_acqua;
-            $('#result').html("<p>Per ottenre una soluzione di " + quantita_soluzione + " ml dovrai utilizzare <strong>" + ris_acqua.toFixed(2) + "</strong> ml di acqua e <strong>" + ris_prodotto.toFixed(2) + "</strong> ml di prodotto</p>");
+            $('#result').html("<div class=\"panel panel-success\"><div class=\"panel-heading\"><h3 class=\"panel-title\">Risultato</h3></div><div class=\"panel-body\">Per ottenre una soluzione di " + quantita_soluzione + " ml dovrai utilizzare <strong>" + ris_acqua.toFixed(2) + "</strong> ml di acqua e <strong>" + ris_prodotto.toFixed(2) + "</strong> ml di prodotto</div></div>");
 
         }
     });
