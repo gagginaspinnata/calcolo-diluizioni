@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Calcolo Diliuzioni</title>
-		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+	
 		<script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<!-- Optional theme -->
@@ -82,6 +82,19 @@
 			<div class="row" id="result">
 			</div>
 		</div>
+		
+		<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyBm0FMUqfDPq20sDItyMvM73ZRMog52_Rc",
+		    authDomain: "diluizioni-d5d00.firebaseapp.com",
+		    databaseURL: "https://diluizioni-d5d00.firebaseio.com",
+		    storageBucket: "diluizioni-d5d00.appspot.com",
+		  };
+		  firebase.initializeApp(config);
+		</script>
+    
 		<script type="text/javascript" src="js/app.js"></script>
 	</body>
 </html>
