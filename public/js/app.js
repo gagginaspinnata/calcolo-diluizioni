@@ -2,11 +2,11 @@ $(document).ready(function() {
 
     var alertDiv = $('#alert');
 
-    function showAlert(type,message){
-        alertDiv.append("<div class=\"alert alert-"+type+" alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong> "+message+"</strong></div>")
+    function showAlert(type, message) {
+        alertDiv.append("<div class=\"alert alert-" + type + " alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong> " + message + "</strong></div>")
     }
 
-    function deleteAlert(){
+    function deleteAlert() {
         alertDiv.html("");
     }
 
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 
             firebase.database().ref('operations/').once('value').then(function(snapshot) {
-                var op = snapshot.val()+1;
+                var op = snapshot.val() + 1;
                 firebase.database().ref('/').set({
                     operations: op
                 });
@@ -39,8 +39,8 @@ $(document).ready(function() {
         }
 
         // Se non è stato impostato il valore quantià soluzione mostra un errore
-        else{
-            showAlert('danger','Inserisci la quantita\' di soluzione desiderata!');
+        else {
+            showAlert('danger', 'Inserisci la quantita\' di soluzione desiderata!');
         }
     });
 
