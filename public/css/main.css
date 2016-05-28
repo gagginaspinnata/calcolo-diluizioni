@@ -1,6 +1,12 @@
 *{
     font-family: 'Raleway', 'sans-serif';
 }
+
+#header{
+    background-color: #3498db;
+    color: #ecf0f1;
+}
+
 #header h1{
     background-color: #3498db;
     margin-top: 0;
@@ -9,4 +15,12 @@
     padding: 20px;
     color: #ecf0f1;
 
+}
+
+#mainForm{
+    margin-top: 10px;
+}
+
+#loginLinks{
+    margin-top: 10px;
 }

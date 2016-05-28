@@ -23,15 +23,22 @@
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
     </head>
     <body>
         <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12" id="header">
+        <div class="row" id="header">
+            <div class="col-md-12">
                 <h1><strong>Calcolo diluizioni</strong></h1>
+
             </div>
         </div>
-            <form>
+
+        <!-- Dove vengono inseriti i link di login -->
+        <div id="loginLinks"></div>
+
+            <form id="mainForm">
+
                 <!-- Displays alerts container -->
                 <div id="alert">
                 </div>
@@ -108,6 +115,10 @@
             </div>
         </div>
         
+         <!-- Libreria per gestire l'autenticazione con google -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        
+        <!-- Firebae config -->
         <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
         <script>
         // Initialize Firebase

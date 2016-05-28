@@ -1,14 +1,37 @@
 $(document).ready(function() {
 
-    var alertDiv = $('#alert');
+    // Questo oggetto jquery lo devo creare prima
+    var loginLinksDiv = $('#loginLinks');
+    createLoginLinks();
 
+    // TODO ancora non funziona
+    var user = firebase.auth().currentUser;
+    if (user) {
+        console.log(user)
+    } else {
+        console.log(user)
+    }
+
+    // Inizializzo i vari oggi jQuery che andrò ad usare
+    var alertDiv = $('#alert');
+    var googleLink = $('#loginGoogle');
+    var facebookLink = $('#loginFacebook');
+
+    // Mostra un div di allerta
     function showAlert(type, message) {
         alertDiv.append("<div class=\"alert alert-" + type + " alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong> " + message + "</strong></div>")
     }
 
+    // Cancella tutti i messaggi di allerta
     function deleteAlert() {
         alertDiv.html("");
     }
+
+
+    function createLoginLinks() {
+        loginLinksDiv.html("<div class=\"row\"><div class=\"col-md-6\"><a href=\"#\" id=\"loginGoogle\">Esegui l\'accesso con Google</a></div><div class=\"col-md-6\"><a href=\"#\" id=\"loginFacebook\">Esegui l\'accesso con Facebook</a></div></div>");
+    }
+
 
     // Quando viene premuto il pulsante calcola
     $('#submit').click(function(e) {
@@ -41,10 +64,38 @@ $(document).ready(function() {
         // Se non è stato impostato il valore quantià soluzione mostra un errore
         else {
             showAlert('danger', 'Inserisci la quantita\' di soluzione desiderata!');
+            setTimeout(function() {
+                deleteAlert();
+            }, 3000);
         }
     });
 
-    // firebase.database().ref('operations/').on('value',function(snapshot){
-    //     $('#number_of_operations').html(snapshot.val());
-    // });
+    // Quando viene premuto il link di login google
+    googleLink.on('click', function(e) {
+        e.preventDefault();
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+            // ...
+        }).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            // ...
+        });
+    });
+
+    // Quando viene premuto il link di login facebook
+    facebookLink.on('click', function(e) {
+        e.preventDefault();
+        console.log('Premuto facebook');
+    });
+
 });
