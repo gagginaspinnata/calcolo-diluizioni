@@ -1,14 +1,17 @@
 // Questo oggetto jquery lo devo creare prima
 var loginLinksDiv = $('#loginLinks');
-createLoginLinks();
 
-// TODO ancora non funziona
-var user = firebase.auth().currentUser;
-if (user) {
-    console.log(user)
-} else {
-    console.log(user)
-}
+
+//TODO Questo è un evento asyncrono. Devo inserire async e gestire tutto il workflow
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        console.log('User logged');
+        createLogouLink(user.email);
+    } else {
+        console.log('No user logged');
+        createLoginLinks();
+    }
+});
 
 // Inizializzo i vari oggi jQuery che andrò ad usare
 var alertDiv = $('#alert');
@@ -17,7 +20,7 @@ var facebookLink = $('#loginFacebook');
 
 // Mostra un div di allerta
 function showAlert(type, message) {
-    alertDiv.append("<div class=\"alert alert-" + type + " alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong> " + message + "</strong></div>")
+    alertDiv.append("<div class=\"alert alert-" + type + " alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong> " + message + "</strong></div>");
 }
 
 // Cancella tutti i messaggi di allerta
@@ -28,6 +31,10 @@ function deleteAlert() {
 
 function createLoginLinks() {
     loginLinksDiv.html("<div class=\"row\"><div class=\"col-md-6\"><a href=\"#\" id=\"loginGoogle\">Esegui l\'accesso con Google</a></div><div class=\"col-md-6\"><a href=\"#\" id=\"loginFacebook\">Esegui l\'accesso con Facebook</a></div></div>");
+}
+
+function createLogouLink(email) {
+    loginLinksDiv.html("<div class=\"row\"><div class=\"col-md-12\">" + email + " <a href=\"#\" id=\"logouLink\">Esci</a></div></div>");
 }
 
 
